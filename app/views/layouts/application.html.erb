@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en" >
   <head>
     <title>OnlineShopping</title>
     <%= csrf_meta_tags %>
@@ -9,7 +9,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="margin: 0px">
+    <div style="background-color: #4d4c55; width: 100%; marigin: 0px">
+        <div style="float: left; width 80%"><img src="/images/logo.jpg" style="width: 200px"></div>
+        <div style="height: 50px; text-align: right;"><div style="padding: 3px; padding-right: 40px; color: white; font-family: sans-serif; font-weight: bold" id="about">
+        <ul  style="list-style-type: none" >
+            <li class=nav style="display: inline"><a href="/products">Products 👨‍💻</a></li>
+            <li class=nav style="display: inline"><a href="/customers">Customers 🧑‍🏫</a></li>
+            <li class=nav style="display: inline"><a href="/orders"> Orders🧑‍🏫</a></li>
+            <li class=nav style="display: inline"><a href="/about">About 🖥</a></li>
+            </div></div>
+        <ul>
+    </div>
+    
+    <div style="margin: 20px">
     <%= yield %>
-  </body>
+    <!-- <%# <insert "set :views, 'app/views/students/show.erb> %> -->
+    
+
+ </div>
+</body>
 </html>

@@ -1,10 +1,10 @@
 <h1> <%= @order.customer.name %> </h1>
 <hr>
 <h2>Purchased: <%= @order.product.name %> </h2>
-<h2>Priced at: $<%= @order.product.price %> </h2>
+<h2>Priced at: <%= number_to_currency(@order.product.price) %> </h2>
 <h2>Quantity: <%= @order.quantity %> </h2>
 <hr>
-<h2>Total Cost:$<%= @order.product.price * @order.quantity %></h2>
+<h2>Total Cost: <%= number_to_currency(@order.product.price * @order.quantity) %></h2>
 <hr>
 <h2><%= @order.date.strftime("Ordered on: %m/%d/%Y at %I:%M%p") %></h2>
 

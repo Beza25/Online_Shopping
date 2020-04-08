@@ -1,7 +1,16 @@
 <h1>Product Details:</h1>
 
 <p>Product name: <%= @product.name %></p>
-<p>Product price: $<%= @product.price %></p>
+<p>Product price: <%= number_to_currency(@product.price) %></p>
+
+<h1>Customer With Product: </h1>
+
+<ul>
+<% @product.orders.each do |orders| %>
+   <li> <%= orders.customer.name %> </li>
+<% end %>
+</ul>
+
 
 <%= link_to "Edit Product", edit_product_path(@product) %> <br>
 <%= button_to "Delete Product", product_path(@product), :method => :delete %> <br>

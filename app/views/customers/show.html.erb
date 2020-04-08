@@ -10,6 +10,12 @@
    
    <h2>My orders</h2>
 
+   <ul>
+     <% @customer.orders.each do |order|%>
+       <li> Ordered <%= order.quantity  %> <%= order.product.name  %> on <%= order.date.strftime("%m/%d/%Y at %I:%M%p") %> for <%= number_to_currency(order.product.price)%>. </li>
+     <%end %>
+    
+   </ul>
    
 
    

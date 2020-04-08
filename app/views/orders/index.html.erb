@@ -3,8 +3,8 @@
 <ol>
     <% @orders.each do |order| %>
        <li><%= link_to order.product.name, order_path(order)%>
-       | Item Price: <%= order.product.price %> | Qty: <%= order.quantity %> 
-       | Total: <%= order.product.price * order.quantity %>
+       | Item Price: <%= number_to_currency(order.product.price) %> | Qty: <%= order.quantity %> 
+       | Total: <%= number_to_currency(order.product.price * order.quantity) %>
     </li>
     <% end %>
 
