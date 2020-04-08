@@ -14,8 +14,14 @@ class CustomersController < ApplicationController
     end
 
     def create
-        @customer.find_or_create_by(customer_params)
-        redirect_to customer_path(@customer)
+        @customer = Customer.new(customer_params)
+        if @customer.valid?
+            @customer.save
+            redirect_to customer_path(@customer)
+        else
+            render :new
+        end
+        
     end
 
     def edit
@@ -23,18 +29,22 @@ class CustomersController < ApplicationController
     
     def update
         @customer.update(customer_params)
-        redirect_to customer_path(@customer)
+        if @customer.valid?
+            @customer.save
+            redirect_to customer_path(@customer)
+        else
+            render :edit
+        end
+      
     end
     
     def destroy
-        # @customer = Customer.find(parms[:id])
-        # @customer.destroy
-        # Customer.destroy(params[:id])
-        find_customer.destroy
+        Customer.destroy(params[:id])
         redirect_to customers_path
     end
 
     private 
+    
     def find_customer
         @customer = Customer.find(params[:id])
     end

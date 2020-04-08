@@ -4,6 +4,6 @@
 <p>Product price: $<%= @product.price %></p>
 
 <%= link_to "Edit Product", edit_product_path(@product) %> <br>
-<%= link_to "Delete Product", product_path(@product), :method => :delete %> <br>
+<%= button_to "Delete Product", product_path(@product), :method => :delete %> <br>
 <%= link_to "Back to Products List", products_path %> <br>
 

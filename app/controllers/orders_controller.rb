@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :find_order, only: [:show, :edit, :update, :destroy]
+    before_action :find_order, only: [:show, :edit, :update]
 
     def index 
         @orders = Order.all
@@ -16,25 +16,33 @@ class OrdersController < ApplicationController
     def create
       
         #Creates new order ; Is a POST request
-        order = Order.create(order_params)
-        # cstomer = Customer.build()
-        redirect_to order_path(order)
+        @order = Order.create(order_params) 
+        if @order.valid?
+            @order.save
+            redirect_to order_path(@order)
+        else
+            render :new
+        end
     end
 
     def edit
     end
 
     def update
-        #
+        #gb
         @order.update(order_params)
-        redirect_to order_path(@order)
+        if @order.valid?
+            @order.save
+            redirect_to order_path(@order)
+        else
+            render :edit 
+        end
+        
     end
 
     def destroy
- 
-        @order.destroy
-        @order.product.destroy
-        @order.customer.destroy
+        # byebug
+        Order.destroy(params[:id])
         redirect_to orders_path
     end
 
